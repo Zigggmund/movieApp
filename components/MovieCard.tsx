@@ -41,7 +41,7 @@ const MovieCard = ({
             {release_date?.split('-')[0]}
           </Text>
 
-           {/*NEXT CODE CAN BE USED IF THERE ARE TV SHOWS, NOT JUST MOVIES*/}
+          {/*NEXT CODE CAN BE USED IF THERE ARE TV SHOWS, NOT JUST MOVIES*/}
           {/*<Text className={'text-sx font-medium text-light-300 uppercase'}>*/}
           {/*  Movie*/}
           {/*</Text>*/}
