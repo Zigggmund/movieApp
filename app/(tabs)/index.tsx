@@ -10,13 +10,13 @@ import { useRouter } from 'expo-router';
 
 import MovieCard from '@/components/MovieCard';
 import SearchBar from '@/components/SearchBar';
+import TrendingCard from '@/components/TrendingCard';
 import { icons } from '@/constants/icons';
 import { images } from '@/constants/images';
 
 import { fetchMovies } from '@/services/API';
 import { getTrendingMovies } from '@/services/appwrite';
 import useFetch from '@/services/useFetch';
-import TrendingCard from '@/components/TrendingCard';
 
 export default function Index() {
   const router = useRouter();
@@ -79,9 +79,13 @@ export default function Index() {
                   ItemSeparatorComponent={() => <View className="w-4" />}
                   className={'mb-4 mt-3'}
                   data={trendingMovies}
-                  keyExtractor={item => item.movie_id.toString()}
+                  // There are non-unique ids
+                  // keyExtractor={item => item.movie_id.toString()}
+                  keyExtractor={(item, index) =>
+                    `${item.movie_id.toString()}-${index}`
+                  }
                   renderItem={({ item, index }) => (
-                    <TrendingCard movie={item} index={index}/>
+                    <TrendingCard movie={item} index={index} />
                   )}
                 />
               </View>
